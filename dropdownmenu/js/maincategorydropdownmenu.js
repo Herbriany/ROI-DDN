@@ -309,8 +309,9 @@ Argos.DropDownMenu = function(ul, options) {
 $(document).ready(function() {	
 
 	function newBottomNav () {
+		var test_server = window.location.href.slice(8, 12);
 		var xhrBottomHeader = new XMLHttpRequest();
-		xhrBottomHeader.open("GET", "https://uat1.test-arg-ie.com/wcsstore/argosie/en_IE/images/dropdownmenu/js/ddm_meganav.json");
+		xhrBottomHeader.open("GET", "https://" + test_server + ".test-arg-ie.com/wcsstore/argosie/en_IE/images/dropdownmenu/js/ddm_meganav.json");
 		xhrBottomHeader.send();
 		xhrBottomHeader.onreadystatechange = function () {
 			
@@ -320,7 +321,7 @@ $(document).ready(function() {
 
 				var status = xhrBottomHeader.status;
 				if (status != 200) {
-					alert("AJAX: server status " + status);
+					console.warn("AJAX: server status " + status);
 					return false;
 				}
 
